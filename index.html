@@ -245,6 +245,20 @@
             });
         });
 
+         (function () {
+            // A partir de qué punto del scroll se mostrará el botón
+            const ishow = 115;
+            const $divtop = document.getElementById("div-totop");
+            window.addEventListener("scroll", function () {
+                if (document.documentElement.scrollTop > ishow) {
+                    $divtop.style.display = "inherit";
+                } else {
+                    $divtop.style.display = "none";
+                }
+            });
+        })();
+
+
         document.addEventListener("scroll", function () {
             let scrollButton = document.querySelector(".cmn-divfloat");
             if (window.scrollY > 300) {
