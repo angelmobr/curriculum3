@@ -238,35 +238,39 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init({
-                duration: 800,  // Duración de la animación en milisegundos
-                once: false     // Si es true, la animación solo ocurre una vez
-            });
-        });
+       document.addEventListener("DOMContentLoaded", function () {
+    AOS.init({
+        duration: 800,
+        once: false
+    });
 
-         (function () {
-            // A partir de qué punto del scroll se mostrará el botón
-            const ishow = 115;
-            const $divtop = document.getElementById("div-totop");
-            window.addEventListener("scroll", function () {
-                if (document.documentElement.scrollTop > ishow) {
-                    $divtop.style.display = "inherit";
-                } else {
-                    $divtop.style.display = "none";
-                }
-            });
-        })();
+    const ishow = 115;
+    const $divtop = document.getElementById("div-totop");
+    const scrollButton = document.querySelector(".cmn-divfloat");
+    const botonIrArriba = document.querySelector(".cmn-divfloat a");
 
+    // Mostrar/ocultar botón según el scroll
+    window.addEventListener("scroll", function () {
+        if (document.documentElement.scrollTop > ishow) {
+            $divtop.style.display = "inherit";
+        } else {
+            $divtop.style.display = "none";
+        }
 
-        document.addEventListener("scroll", function () {
-            let scrollButton = document.querySelector(".cmn-divfloat");
-            if (window.scrollY > 300) {
-                scrollButton.classList.add("show"); // Muestra el botón con transición
-            } else {
-                scrollButton.classList.remove("show"); // Lo oculta suavemente
-            }
-        });
+        if (window.scrollY > 300) {
+            scrollButton.classList.add("show");
+        } else {
+            scrollButton.classList.remove("show");
+        }
+    });
+
+    // Hacer scroll suave al hacer clic
+    botonIrArriba.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+        document.body.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});
+
     </script>
 
 </body>
