@@ -34,6 +34,7 @@ body {
     transform: translateY(20px); /* Ligeramente desplazado hacia abajo */
     transition: opacity 0.4s ease, transform 0.4s ease; /* Suaviza la aparición/desaparición */
     pointer-events: none; /* Evita interacción cuando está invisible */
+     z-index: 9999;
 }
 
 .cmn-btncircle i {
